@@ -1,0 +1,31 @@
+# Environment configurations
+.env
+.env.*
+
+# Python compilation caching
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+.pytest_cache/
+
+# Serialized machine learning models
+backend/models/*.joblib
+
+# Attacker session logs, quarantined malware binaries, and reports
+backend/logs/
+backend/reports/
+
+# Frontend node modules and compiled distribution assets
+frontend/node_modules/
+frontend/dist/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

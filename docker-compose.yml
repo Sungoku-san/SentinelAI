@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: sentinelai_db
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  sentinelai:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sentinelai_app
+    restart: always
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017
+      - MONGO_DB_NAME=sentinelai
+    ports:
+      - "8000:8000"   # Admin dashboard & API
+      - "2222:2222"   # SSH honeypot emulator
+      - "8080:8080"   # HTTP honeypot emulator
+      - "2121:2121"   # FTP honeypot emulator
+      - "2323:2323"   # Telnet honeypot emulator
+    volumes:
+      - ./backend/logs:/app/backend/logs
+      - ./backend/reports:/app/backend/reports
+
+volumes:
+  mongodb_data:

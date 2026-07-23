@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cyber-bg: #0A0F1D;
+  --color-cyber-card: #131C31;
+  --color-cyber-border: #1E2D4A;
+  --color-cyber-text: #F8FAFC;
+  --color-cyber-muted: #94A3B8;
+  --color-cyber-primary: #06B6D4;
+  --color-cyber-secondary: #8B5CF6;
+  --color-cyber-accent: #EF4444;
+  --color-cyber-success: #10B981;
+}
+
+@layer base {
+  body {
+    @apply bg-cyber-bg text-cyber-text antialiased;
+    font-family: 'Outfit', 'Inter', system-ui, sans-serif;
+  }
+}
+
+/* Custom terminal scanlines */
+.scanline {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0F1D;
+}
+::-webkit-scrollbar-thumb {
+  background: #1E2D4A;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #06B6D4;
+}
